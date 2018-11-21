@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gs</groupId>
+  <artifactId>fefec</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+    <properties>
+	 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	 	<!-- test version -->
+		<junit.version>4.8.2</junit.version>
+		 
+		<!-- Spring version --> 
+		<spring.version>4.3.16.RELEASE</spring.version>
+		<spring.security.version>4.0.0.RELEASE</spring.security.version>
+		<spring.batch.version>3.0.9.RELEASE</spring.batch.version>
+		 
+		<!-- Ws version --> 
+		<jersey.version>2.6</jersey.version>
+		<jackson.version>2.6.4</jackson.version>
+		 
+		 <!-- Maven version --> 
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+		
+		<!-- WEB version --> 
+		<javax.servlet-api.version>2.5</javax.servlet-api.version>
+		<tiles.version>3.0.5</tiles.version>		 
+		<jstl.version>1.2</jstl.version>
+		 
+		 <!-- Oracle version --> 
+		 <ojdbc.version>12.1.0</ojdbc.version>	
+		 
+		 <!-- Java version --> 
+		 <java.version>1.8</java.version>	 
+  </properties>
+   <dependencies>
+  
+   <!-- TEST -->
+	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>${junit.version}</version>
+  		<scope>test</scope>
+  	</dependency>
+  	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>${spring.version}</version>
+	    <scope>test</scope>
+	</dependency>
+		
+	<!-- SPRING CORE -->	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	
+	
+	<!-- SPRING AOP  -->
+  	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<version>1.8.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>1.8.1</version>
+	</dependency>
+		
+		
+	<!-- SPRING UTILERIAS  -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+
+	 <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${spring.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-expression</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+     
+	<!--  LOG  -->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
+	
+
+ 	<!-- librerias de spring -->	
+	<dependency>
+    	<groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>2.2</version>
+    </dependency>
+
+  	<!-- Encriptacion -->	
+  	<dependency>
+		<groupId>org.bouncycastle</groupId>
+		<artifactId>bcpg-jdk16</artifactId>
+		<version>1.46</version>
+	</dependency>
+
+	<!-- Commons  -->
+	<dependency>
+	    <groupId>commons-codec</groupId>
+	    <artifactId>commons-codec</artifactId>
+	    <version>1.10</version>
+   </dependency>
+  	
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+    </plugins> 
+  </build>
+  <modules>
+    <module>fefec-web</module>
+    <module>fefec-ws</module>
+    <module>fefec-batch</module>
+    <module>fefec-commons</module>
+  </modules>
+</project>

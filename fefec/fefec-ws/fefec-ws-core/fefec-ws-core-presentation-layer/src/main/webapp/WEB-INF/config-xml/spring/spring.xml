@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ldap="http://www.springframework.org/schema/ldap"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/ldap
+		http://www.springframework.org/schema/ldap/spring-ldap-2.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <context:annotation-config />
+	
+	<import resource="spring-datasource.xml"/>
+	
+	
+	<!-- Properties -->	
+	<bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="singleton" value="true" />
+	  <property name="ignoreResourceNotFound" value="true" />
+	  <property name="locations">
+	    <list>
+	     	<value>file:${path_commons}urlServices.properties</value>
+  
+	    </list>
+	  </property>
+	</bean>
+ 
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	  <property name="properties" ref="appProperties" />
+	  <property name="ignoreUnresolvablePlaceholders" value="true"/>
+	  <property name="ignoreResourceNotFound" value="true"/>
+	</bean>
+	
+        
+	<context:component-scan base-package="com.gs">
+	</context:component-scan>
+  
+</beans>

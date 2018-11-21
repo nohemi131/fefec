@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.gs</groupId>
+    <artifactId>fefec</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>fefec-batch</artifactId>
+  <packaging>pom</packaging>
+  <dependencies>
+  	<!-- Spring Batch dependencies -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>${spring.batch.version}</version>
+			<exclusions>
+		        <exclusion>
+		            <groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+		        </exclusion>
+		         <exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+ 				</exclusion>	
+ 				<exclusion>		
+ 					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+ 				</exclusion>
+ 				<exclusion>		
+ 					<groupId>org.springframework</groupId>
+					<artifactId>spring-jdbc</artifactId>
+ 				</exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-infrastructure</artifactId>
+			<version>${spring.batch.version}</version>
+		</dependency>
+
+		<!-- Spring Batch unit test -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<version>${spring.batch.version}</version>
+			<scope>test</scope>
+		</dependency> 
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+		    <version>1.5.9.RELEASE</version>
+		</dependency>
+		
+		  <!-- ojdbc7.jar example -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>${ojdbc.version}</version>
+        </dependency>
+  	<dependency>
+  		<groupId>com.gs</groupId>
+  		<artifactId>fefec-commons-entities</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.gs</groupId>
+  		<artifactId>fefec-commons-utilities</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  <modules>
+    <module>fefec-batch-new-project</module>
+  </modules>
+</project>

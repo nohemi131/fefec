@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="fefec-ws-core-presentation-layer-1.0-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="fefec-ws-core-business-layer-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-ws-core-business-layer/fefec-ws-core-business-layer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fefec-ws-core-business-interfaces-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-ws-core-business-interfaces/fefec-ws-core-business-interfaces">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fefec-ws-core-data-layer-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-ws-core-data-layer/fefec-ws-core-data-layer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fefec-ws-core-data-interfaces-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-ws-core-data-interfaces/fefec-ws-core-data-interfaces">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fefec-commons-entities-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-commons-entities/fefec-commons-entities">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fefec-commons-utilities-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fefec-commons-utilities/fefec-commons-utilities">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/sppi-ws-core-presentation-layer/target/classes"/>
+        <property name="context-root" value="fefec-ws-core-presentation-layer"/>
+    </wb-module>
+</project-modules>

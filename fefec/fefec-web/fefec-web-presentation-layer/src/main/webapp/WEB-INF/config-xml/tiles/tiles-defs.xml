@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- Plantilla comun (web publico) -->
+	<definition name="template" template="/WEB-INF/paginas/templates/general/template.jsp" >
+		<put-attribute name="title"  value="WEB" />
+		<put-attribute name="header" value="/WEB-INF/paginas/templates/general/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/paginas/templates/general/none.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/paginas/templates/general/footer.jsp" />
+	</definition>
+
+<!--  LOGIN  -->
+	<definition name="LoginController.login" extends="template" >	
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/paginas/publico/login/login.jsp" />
+	</definition>
+	
+	<!--  Home  -->
+	<definition name="HomeController.index" extends="LoginController.login">
+		<put-attribute name="title" value="Login" />
+
+	</definition>
+
+	<definition name="HomeController.notAllowed" extends="template" >	
+	 	<put-attribute name="body" value="/WEB-INF/paginas/public/notallowed/notallowed.jsp" />
+		<put-attribute name="title" value="Not Allowed" />
+	</definition>
+
+	<definition name="ErrorsController.error" extends="template" >	
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body" value="/WEB-INF/paginas/publico/notallowed/notallowed.jsp" />
+	</definition>
+	
+	<definition name="DeniedController.denied" extends="template" >	
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body" value="/WEB-INF/paginas/publico/notallowed/notallowed.jsp" />
+	</definition>	
+
+					
+
+	<!--  HEADER  -->
+	<definition name="HomeController.header" template="/WEB-INF/paginas/templates/general/private/headerrefresh.jsp">
+		<put-attribute name="title" value="Header" />
+	</definition>	
+
+	
+
+	
+</tiles-definitions>

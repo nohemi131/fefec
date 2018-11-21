@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+
+    <!-- Login Interceptor -->
+    <mvc:interceptors>
+      <mvc:interceptor>
+            <mvc:mapping path="/privado/**"/>
+            <bean class="com.gs.fefec.web.pub.seguridad.AutenticacionInterceptador"/>
+        </mvc:interceptor> 
+        <!-- workaround to fix IE8 problem -->
+        <bean id="webContentInterceptor"
+              class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+            <property name="cacheSeconds" value="0"/>
+            <property name="useExpiresHeader" value="false"/>
+            <property name="useCacheControlHeader" value="false"/>
+            <property name="useCacheControlNoStore" value="false"/>
+        </bean>
+ 		<!-- parameter for language Internationalization -->
+  		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale" />
+        </bean>
+    </mvc:interceptors>
+
+	<!-- TILES-->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/config-xml/tiles/tiles-defs.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
+	</bean>	
+    
+
+	<!-- Spring MVC Internationalization -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames" >
+	         <list>
+	            <value>/WEB-INF/config-xml/languages/login_messages</value>	           
+	        </list>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="es"/>
+    </bean>
+	
+
+	 <!-- View Handler -->
+   	 
+ <bean id="contentNegotiationManager"  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true" />
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="useJaf" value="false"/>
+        <property name="defaultContentType" value="text/html" />
+
+        <property name="mediaTypes">
+            <map>
+               <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+           </map>
+        </property>
+    </bean>
+    
+   
+
+<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+    <property name="viewResolvers">
+        <list>
+        
+       			<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+                    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+                </bean>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/"/>
+                </bean>
+        </list>
+    </property>
+    <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+        </list>
+    </property>
+</bean>
+
+  
+        
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+	<!-- Resources Css, Js, Jsp, Images -->
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+
+
+	
+</beans>
